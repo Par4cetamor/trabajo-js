@@ -5,7 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>script.js</title>
     
-    <script src="trabajo.js"></script>
+    <script>
+        // Arreglo inicial de vehículos en el estacionamiento
+let estacionamiento = [];
+
+// Agregar vehículos al estacionamiento
+estacionamiento.push('Rojo', 'Gris', 'Azul', 'Amarillo', 'Verde');
+
+// Imprimir lista de vehículos con su posición
+console.log('Vehículos en el estacionamiento:');
+estacionamiento.forEach((vehiculo, index) => {
+  console.log(`Posición ${index + 1}: ${vehiculo}`);
+});
+console.log(`Hay ${estacionamiento.length} vehículos en el estacionamiento.`);
+
+// Agregar un vehículo blanco y actualizar la lista
+const posicionVacia = estacionamiento.indexOf(undefined);
+if (posicionVacia !== -1) {
+  estacionamiento[posicionVacia] = 'Blanco';
+  console.log('\nLista actualizada con vehículo Blanco:');
+  estacionamiento.forEach((vehiculo, index) => {
+    console.log(`Posición ${index + 1}: ${vehiculo}`);
+  });
+}
+
+// Sustituir vehículo azul por uno negro, eliminar vehículo rojo y mover los vehículos
+estacionamiento[estacionamiento.indexOf('Azul')] = 'Negro';
+estacionamiento.splice(estacionamiento.indexOf('Rojo'), 1);
+console.log('\nLista actualizada después de cambios:');
+estacionamiento.forEach((vehiculo, index) => {
+  console.log(`Posición ${index + 1}: ${vehiculo}`);
+});
+
+// Eliminar el último elemento de la lista
+estacionamiento.pop();
+console.log('\nLista actualizada después de eliminar el último elemento:');
+estacionamiento.forEach((vehiculo, index) => {
+  console.log(`Posición ${index + 1}: ${vehiculo}`);
+});
+
+// Encontrar la posición del vehículo amarillo
+const posicionAmarillo = estacionamiento.indexOf('Amarillo');
+if (posicionAmarillo !== -1) {
+  console.log(`\nEl vehículo Amarillo se encuentra en la posición ${posicionAmarillo + 1}.`);
+} else {
+  console.log('\nEl vehículo Amarillo no se encuentra en el estacionamiento.');
+}
+
+// Función para buscar un vehículo en el estacionamiento
+function buscarVehiculo(vehiculo) {
+  let encontrado = false;
+  let posicion = -1;
+
+  for (let i = 0; i < estacionamiento.length; i++) {
+    if (estacionamiento[i] === vehiculo) {
+      encontrado = true;
+      posicion = i;
+      break;
+    }
+  }
+
+  if (encontrado) {
+    console.log(`El vehículo ${vehiculo} se encuentra en la posición ${posicion + 1}.`);
+  } else {
+    console.log(`El vehículo ${vehiculo} no se encuentra en el estacionamiento.`);
+  }
+}
+
+// Ejemplo de uso de la función buscarVehiculo
+buscarVehiculo('Amarillo');
+buscarVehiculo('Rojo');
+    </script>
 </head>
 <body>
 
